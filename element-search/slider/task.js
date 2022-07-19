@@ -1,56 +1,29 @@
 let slider = document.getElementsByClassName("slider__item");
 let btnNext = document.querySelector(".slider__arrow_next");
+let btnPrev = document.querySelector(".slider__arrow_prev");
+let currentIndex = 0;
+const elementsNumber = 5;
+var momentIndex;
 
-// btnNext.onclick = function () {
-//   for (let i = 0; i < slider.length; i++) {
-//     let a = 0;
-//     a++
-//     slider[i,0].classList.remove("slider__item_active");
-//     slider[i,a].classList.add("slider__item_active");
-//   }
-// };
+btnNext.addEventListener("click", function () {
+  slider[currentIndex].classList.remove("slider__item_active");
+  currentIndex = (currentIndex + 1) % elementsNumber;
+  slider[currentIndex].classList.add("slider__item_active");
+  momentIndex = currentIndex;
+  console.log(currentIndex);
+});
 
-// let a =0;
-// btnNext.addEventListener("click", function(){
-//   for (let i = 0; i < slider.length; i++) {
-//     if(a === 0){
-//       a++
-//       slider[i,0].classList.remove("slider__item_active");
-//     slider[i,a].classList.add("slider__item_active");
-//     } else if (a === 1) {
-//       a = a+1
-//       slider[i,a].classList.add("slider__item_active");
-//     }
+btnPrev.addEventListener("click", function () {
+  slider[momentIndex].classList.remove("slider__item_active");
 
-//   }
-// })
-
-function slider1() {
-  for (let i = 0; i < slider.length; i++) {
-    let a = 0;
-    let b = 0;
-    a++;
-    slider[b].classList.remove("slider__item_active");
-    slider[a].classList.add("slider__item_active");
-    b++;
-
-    // if (a < 5) {
-    //   a++;
-    console.log(a);
-
-    //   slider[a].classList.add("slider__item_active");
-    // } else if ((a = 5)) {
-    //   break;
-    // }
+  // if (currentIndex == 0 ) {
+  //   momentIndex = elementsNumber - 1;
+  // }
+  if (momentIndex > 0) {
+    momentIndex = momentIndex - 1;
+  } else if (momentIndex == 0) {
+    momentIndex = elementsNumber - 1;
   }
-}
-setInterval(slider1, 1000);
-// btnNext.onclick = slider1
-
-// function yyy(b) {
-//   if (b < 5) {
-//     b++;
-//   }
-// }
-// btnNext.onclick = yyy(0);
-// console.log(yyy());
+  slider[momentIndex].classList.add("slider__item_active");
+  console.log(momentIndex);
+});
