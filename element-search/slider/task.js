@@ -9,21 +9,25 @@ btnNext.addEventListener("click", function () {
   slider[currentIndex].classList.remove("slider__item_active");
   currentIndex = (currentIndex + 1) % elementsNumber;
   slider[currentIndex].classList.add("slider__item_active");
-  momentIndex = currentIndex;
+  // momentIndex = currentIndex;
   console.log(currentIndex);
 });
 
 btnPrev.addEventListener("click", function () {
-  slider[momentIndex].classList.remove("slider__item_active");
+  slider[currentIndex].classList.remove("slider__item_active");
 
   // if (currentIndex == 0 ) {
   //   momentIndex = elementsNumber - 1;
   // }
-  if (momentIndex > 0) {
-    momentIndex = momentIndex - 1;
-  } else if (momentIndex == 0) {
-    momentIndex = elementsNumber - 1;
-  }
-  slider[momentIndex].classList.add("slider__item_active");
-  console.log(momentIndex);
+  // if (momentIndex > 0) {
+  //   momentIndex = momentIndex - 1;
+  // } else if (momentIndex == 0) {
+  //   momentIndex = elementsNumber - 1;
+  // }
+  currentIndex = (currentIndex - 1 + elementsNumber) % elementsNumber;
+  slider[currentIndex].classList.add("slider__item_active");
+  // console.log(momentIndex);
+  console.log(currentIndex);
 });
+
+console.log(currentIndex);
