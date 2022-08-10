@@ -7,8 +7,11 @@ let dropdown__list = document.querySelector(".dropdown__list");
 //   } else {dropdown__list.classList.add("dropdown__list_active");}
 // });
 
-dropdown__value.addEventListener("click", () => dropdown__list.classList.toggle("dropdown__list_active"));
-
+dropdown__value.addEventListener("click",() => dropdown__list.classList.toggle("dropdown__list_active"));
 const arrDropdownItem = Array.from(document.querySelectorAll(".dropdown__item"));
 console.log(arrDropdownItem);
-arrDropdownItem.forEach((el) => el.addEventListener("click", () => dropdown__value.textContent = el.textContent));
+arrDropdownItem.forEach((el) => el.addEventListener("click",(event) => {
+  dropdown__value.textContent = el.textContent 
+  event.preventDefault()
+  dropdown__list.classList.toggle("dropdown__list_active")
+}));
